@@ -19,6 +19,12 @@ class Comedien
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $prenom = null;
 
+    #[ORM\Column]
+    private ?int $telephone = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $email = null;
+
     #[ORM\Column(nullable: true)]
     private ?int $age = null;
 
@@ -56,6 +62,28 @@ class Comedien
     public function setPrenom(?string $prenom): self
     {
         $this->prenom = $prenom;
+
+        return $this;
+    }
+    public function getTelephone(): ?int
+    {
+        return $this->telephone;
+    }
+
+    public function setTelephone(int $telephone): self
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
 
         return $this;
     }
