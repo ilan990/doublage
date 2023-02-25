@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository\Avatar;
+namespace App\Repository;
 
-use App\Entity\Avatar\Comedien;
+use App\Entity\Comedien;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 

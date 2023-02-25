@@ -5,7 +5,7 @@ vich_uploader:
         type: attribute
 
     mappings:
-        avatar_thumbnail:
+        avatar_images:
             uri_prefix: /images/avatar
             upload_destination: '%kernel.project_dir%/public/images/avatar'
             namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

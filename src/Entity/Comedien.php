@@ -1,17 +1,30 @@
 <?php
 
-namespace App\Entity\Avatar;
+namespace App\Entity;
 
-use App\Repository\Avatar\ComedienRepository;
+
+use App\Repository\ComedienRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Entity\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 
 #[ORM\Entity(repositoryClass: ComedienRepository::class)]
+#[Vich\Uploadable]
 class Comedien
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id_comedien = null;
+
+    #[Vich\UploadableField(mapping: 'avatar_images', fileNameProperty: 'imageName')]
+    private ?File $imageFile = null;
+
+
+
+    #[ORM\Column(nullable: true)]
+    private ?string $imageName = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $nom = null;
@@ -20,7 +33,7 @@ class Comedien
     private ?string $prenom = null;
 
     #[ORM\Column]
-    private ?int $telephone = null;
+    private ?string $telephone = null;
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
@@ -34,12 +47,39 @@ class Comedien
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $type = null;
 
-    #[ORM\OneToOne(inversedBy: 'avatar',targetEntity: Thumbnail::class,cascade: ['persist','remove'])]
-    private Thumbnail $thumbnail;
+    #[ORM\Column(nullable: false)]
+    private ?\DateTimeImmutable $updatedAt = null;
+
+
 
     public function getIdComedien(): ?int
     {
         return $this->id_comedien;
+    }
+    public function setImageFile(?File $imageFile = null): void
+    {
+        $this->imageFile = $imageFile;
+
+        if (null !== $imageFile) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function setImageName(?string $imageName): void
+    {
+        $this->imageName = $imageName;
+    }
+
+    public function getImageName(): ?string
+    {
+        return $this->imageName;
     }
 
     public function getNom(): ?string
@@ -65,12 +105,12 @@ class Comedien
 
         return $this;
     }
-    public function getTelephone(): ?int
+    public function getTelephone(): ?string
     {
         return $this->telephone;
     }
 
-    public function setTelephone(int $telephone): self
+    public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
 
@@ -124,15 +164,19 @@ class Comedien
         return $this;
     }
 
-    public function getThumbnail(): ?Thumbnail
+    /**
+     * @return \DateTimeImmutable|null
+     */
+    public function getUpdatedAt(): ?\DateTimeImmutable
     {
-        return $this->thumbnail;
+        return $this->updatedAt;
     }
 
-    public function setThumbnail(Thumbnail $thumbnail): self
+    /**
+     * @param \DateTimeImmutable|null $updatedAt
+     */
+    public function setUpdatedAt(?\DateTimeImmutable $updatedAt): void
     {
-        $this->thumbnail = $thumbnail;
-
-        return $this;
+        $this->updatedAt = $updatedAt;
     }
 }

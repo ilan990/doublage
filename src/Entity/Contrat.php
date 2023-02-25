@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Entity\Avatar\Comedien;
 use App\Repository\ContratRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
