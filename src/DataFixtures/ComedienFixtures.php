@@ -32,6 +32,7 @@ class ComedienFixtures extends Fixture
             $comedien -> setAge(rand(18,75));
             $comedien -> setTelephone($numero);
             $comedien -> setUpdatedAt(new DateTimeImmutable());
+            $comedien -> setImageName('inconnu.jpg');
 
             $manager->persist($comedien);
 
