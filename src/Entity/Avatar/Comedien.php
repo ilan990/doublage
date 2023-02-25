@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Entity;
+namespace App\Entity\Avatar;
 
-use App\Repository\ComedienRepository;
+use App\Repository\Avatar\ComedienRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ComedienRepository::class)]
@@ -28,8 +28,8 @@ class Comedien
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $type = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $image = null;
+    #[ORM\OneToOne(inversedBy: 'avatar',targetEntity: Thumbnail::class,cascade: ['persist','remove'])]
+    private Thumbnail $thumbnail;
 
     public function getIdComedien(): ?int
     {
@@ -96,14 +96,14 @@ class Comedien
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getThumbnail(): ?Thumbnail
     {
-        return $this->image;
+        return $this->thumbnail;
     }
 
-    public function setImage(?string $image): self
+    public function setThumbnail(Thumbnail $thumbnail): self
     {
-        $this->image = $image;
+        $this->thumbnail = $thumbnail;
 
         return $this;
     }
