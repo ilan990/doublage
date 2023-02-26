@@ -1,7 +1,5 @@
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+
+.nav_ul {
     width: 12%;
     background-color: #151c1f;
     position: fixed;
@@ -9,14 +7,14 @@ ul {
     overflow: auto;
 }
 
-li a {
+.dropdown a {
     display: block;
     color: white;
     padding: 8px 16px;
     text-decoration: none;
 }
 
-li a.deconnexion {
+ a.deconnexion {
     background-color: red;
     color: white;
     position: fixed;
@@ -29,7 +27,6 @@ li a:hover:not(.active) {
     background-color: #555;
     color: white;
 }
-
 /* Style the dropdown button */
 .dropbtn {
     color: white;

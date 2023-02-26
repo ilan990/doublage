@@ -35,7 +35,6 @@ class ComedienController extends AbstractController
         $comedien = new Comedien();
         $form = $this->createForm(ComedienType::class, $comedien);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
 
             $comedienRepository->save($comedien, true);

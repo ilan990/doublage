@@ -3,3 +3,29 @@ body{
     margin: 0;
 }
 
+label,input,.btn,h1{
+    color:white
+}
+.login-label,.login-btn{
+    color:black
+}
+
+.cache-message ul{
+   display: none;
+}
+
+.form-error {
+    color: #dc3545;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+ul {
+    list-style-type: none;
+    margin-bottom: 5px;
+    padding: 0;
+}
+
+li a{
+    text-decoration: none;
+}
