@@ -2,17 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\ContratRepository;
+use App\Repository\ContratComedienRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ContratRepository::class)]
-class  Contrat
+#[ORM\Entity(repositoryClass: ContratComedienRepository::class)]
+class ContratComedien
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id_contrat = null;
+    private ?int $id_contrat_comedien = null;
 
     #[ORM\ManyToOne(targetEntity: Comedien::class)]
     #[ORM\JoinColumn(name: 'id_comedien', referencedColumnName: 'id_comedien')]
@@ -20,7 +20,11 @@ class  Contrat
 
     #[ORM\ManyToOne(targetEntity: Da::class)]
     #[ORM\JoinColumn(name: 'id_da', referencedColumnName: 'id_da')]
-    private ?int $id_da = null;
+    private Da|null $id_da = null;
+
+    #[ORM\ManyToOne(targetEntity: ContratDa::class)]
+    #[ORM\JoinColumn(name: 'id_contrat_da', referencedColumnName: 'id_contrat_da')]
+    private ContratDa|null $id_contrat_da = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $creation_contrat = null;
@@ -45,7 +49,55 @@ class  Contrat
 
     public function getIdContrat(): ?int
     {
-        return $this->id_contrat;
+        return $this->id_contrat_comedien;
+    }
+
+    /**
+     * @return Comedien|null
+     */
+    public function getIdComedien(): ?Comedien
+    {
+        return $this->id_comedien;
+    }
+
+    /**
+     * @param Comedien|null $id_comedien
+     */
+    public function setIdComedien(?Comedien $id_comedien): void
+    {
+        $this->id_comedien = $id_comedien;
+    }
+
+    /**
+     * @return Da|null
+     */
+    public function getIdDa(): ?Da
+    {
+        return $this->id_da;
+    }
+
+    /**
+     * @param Da|null $id_da
+     */
+    public function setIdDa(?Da $id_da): void
+    {
+        $this->id_da = $id_da;
+    }
+
+    /**
+     * @return ContratDa|null
+     */
+    public function getIdContratDa(): ?ContratDa
+    {
+        return $this->id_contrat_da;
+    }
+
+    /**
+     * @param ContratDa|null $id_contrat_da
+     */
+    public function setIdContratDa(?ContratDa $id_contrat_da): void
+    {
+        $this->id_contrat_da = $id_contrat_da;
     }
 
 

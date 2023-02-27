@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Contrat;
+use App\Entity\ContratDa;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Contrat>
+ * @extends ServiceEntityRepository<ContratDa>
  *
- * @method Contrat|null find($id, $lockMode = null, $lockVersion = null)
- * @method Contrat|null findOneBy(array $criteria, array $orderBy = null)
- * @method Contrat[]    findAll()
- * @method Contrat[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method ContratDa|null find($id, $lockMode = null, $lockVersion = null)
+ * @method ContratDa|null findOneBy(array $criteria, array $orderBy = null)
+ * @method ContratDa[]    findAll()
+ * @method ContratDa[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ContratRepository extends ServiceEntityRepository
+class ContratDaRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Contrat::class);
+        parent::__construct($registry, ContratDa::class);
     }
 
-    public function save(Contrat $entity, bool $flush = false): void
+    public function save(ContratDa $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class ContratRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Contrat $entity, bool $flush = false): void
+    public function remove(ContratDa $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class ContratRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Contrat[] Returns an array of Contrat objects
+//     * @return ContratDa[] Returns an array of ContratDa objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class ContratRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Contrat
+//    public function findOneBySomeField($value): ?ContratDa
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

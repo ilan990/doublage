@@ -33,47 +33,12 @@
 
 
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id_comedien</th>
-                <th>ImageName</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Telephone</th>
-                <th>Email</th>
-                <th>Age</th>
-                <th>Sexe</th>
-                <th>Type</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for comedien in comediens %}
-            <tr>
-                <td>{{ comedien.idComedien }}</td>
-                <td>{{ comedien.imageName }}</td>
-                <td>{{ comedien.nom }}</td>
-                <td>{{ comedien.prenom }}</td>
-                <td>{{ comedien.telephone }}</td>
-                <td>{{ comedien.email }}</td>
-                <td>{{ comedien.age }}</td>
-                <td>{{ comedien.sexe }}</td>
-                <td>{{ comedien.type }}</td>
-                <td>{{ comedien.updatedAt ? comedien.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+
 {#                <td>#}
 {#                    <a href="{{ path('app_comedien_show', {'id_comedien': comedien.id_comedien}) }}">show</a>#}
 {#                    <a href="{{ path('app_comedien_edit', {'id_comedien': comedien.id_comedien}) }}">edit</a>#}
 {#                </td>#}
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="11">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+
 
     <a href="{{ path('app_comedien_new') }}">Create new</a>
 {% endblock %}
