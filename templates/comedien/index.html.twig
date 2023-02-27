@@ -3,7 +3,35 @@
 {% block title %}Comedien index{% endblock %}
 
 {% block body %}
-    <h1>Comedien index</h1>
+
+    <div class="row d-flex justify-content-center">
+    {% for comedien in comediens %}
+        <div class="col-md-2 mx-4 my-4">
+            <div class="card" style="width: 14rem;">
+                <img src="{{ asset('images/avatar/inconnu.jpg') }}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ comedien.prenom }} {{ comedien.nom }}</h5>
+                    <p class="card-text">{{ comedien.tauxjournalier }} € / Jour</p>
+                </div>
+                <div class="card-body">
+                    <a href="#" class="card-link">Card link</a>
+                    <a href="#" class="card-link">Another link</a>
+                </div>
+            </div>
+        </div>
+        {% if loop.index % 4 == 0 %}
+            </div><div class="row d-flex justify-content-center">
+        {% endif %}
+    {% else %}
+        <tr>
+            <td colspan="11">Pas de comédiens</td>
+        </tr>
+    {% endfor %}
+    </div>
+
+
+
+
 
     <table class="table">
         <thead>

@@ -47,6 +47,11 @@ class Comedien
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $type = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $taux_journalier = null;
+
+
+
     #[ORM\Column(nullable: false)]
     private ?\DateTimeImmutable $updatedAt = null;
 
@@ -163,7 +168,21 @@ class Comedien
 
         return $this;
     }
+    /**
+     * @return int|null
+     */
+    public function getTauxJournalier(): ?int
+    {
+        return $this->taux_journalier;
+    }
 
+    /**
+     * @param int|null $taux_journalier
+     */
+    public function setTauxJournalier(?int $taux_journalier): void
+    {
+        $this->taux_journalier = $taux_journalier;
+    }
     /**
      * @return \DateTimeImmutable|null
      */
