@@ -75,6 +75,17 @@ class ComedienType extends AbstractType
                     ]),
                 ],
 
+            ])
+            ->add('taux_journalier', IntegerType::class, [
+                'label' => 'Taux journalier',
+                'attr' => ['class' => 'form-control mb-3'],
+                'constraints' => [
+                    new Range([
+                        'min' => 90,
+                        'max' => 1000,
+
+                    ]),
+                ],
 
             ])
             ->add('sexe', ChoiceType::class, [
