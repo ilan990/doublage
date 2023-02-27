@@ -15,7 +15,7 @@
                 </div>
                 <div class="card-body">
                     <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
+                    <a href="{{ path('app_comedien_show', {'id_comedien': comedien.idComedien}) }}">show</a>
                 </div>
             </div>
         </div>
@@ -35,7 +35,7 @@
 
 
 {#                <td>#}
-{#                    <a href="{{ path('app_comedien_show', {'id_comedien': comedien.id_comedien}) }}">show</a>#}
+
 {#                    <a href="{{ path('app_comedien_edit', {'id_comedien': comedien.id_comedien}) }}">edit</a>#}
 {#                </td>#}
 

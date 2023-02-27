@@ -52,7 +52,7 @@
 
     <a href="{{ path('app_comedien_index') }}">back to list</a>
 
-    <a href="{{ path('app_comedien_edit', {'id_comedien': comedien.id_comedien}) }}">edit</a>
+    <a href="{{ path('app_comedien_edit', {'id_comedien': comedien.idComedien}) }}">edit</a>
 
-    {{ include('comedien/_delete_form.html.twig') }}
+{#    {{ include('comedien/_delete_form.html.twig') }}#}
 {% endblock %}
