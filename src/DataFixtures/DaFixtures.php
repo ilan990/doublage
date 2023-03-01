@@ -23,13 +23,15 @@ class DaFixtures extends Fixture
             $da -> setEmail('ilan@assouline.fr')
                 -> setNom('Assouline')
                 -> setPrenom('Ilan')
-                ->setPassword($this -> hasher->hashPassword($da,'password'));
+                ->setPassword($this -> hasher->hashPassword($da,'password'))
+                ->setAvatar('ilan.jpg');
             $manager -> persist($da);
             $da = new Da();
             $da -> setEmail('florimond@labulle.fr')
                 -> setNom('Labulle')
                 -> setPrenom('Florimond')
-                ->setPassword($this -> hasher->hashPassword($da,'password'));
+                ->setPassword($this -> hasher->hashPassword($da,'password'))
+                ->setAvatar('florimond.jpg');
             $manager -> persist($da);
             $manager->flush();
     }
