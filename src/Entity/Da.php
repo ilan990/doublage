@@ -118,12 +118,12 @@ class Da implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getAvatar(): ?string
     {
-        return $this->image;
+        return $this->avatar;
     }
 
-    public function setAvatar (?string $image): self
+    public function setAvatar (?string $avatar): self
     {
-        $this->image = $image;
+        $this->avatar = $avatar;
 
         return $this;
     }
