@@ -44,6 +44,15 @@ class Da implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->id_da;
     }
 
+    /**
+     * @param int|null $id_da
+     */
+    public function setIdDa(?int $id_da): void
+    {
+        $this->id_da = $id_da;
+    }
+
+
     public function getEmail(): ?string
     {
         return $this->email;

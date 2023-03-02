@@ -61,6 +61,14 @@ class Comedien
     {
         return $this->id_comedien;
     }
+
+    /**
+     * @param int|null $id_comedien
+     */
+    public function setIdComedien(?int $id_comedien): void
+    {
+        $this->id_comedien = $id_comedien;
+    }
     public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
