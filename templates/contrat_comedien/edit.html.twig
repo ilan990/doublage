@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit ContratComedien{% endblock %}
+
+{% block body %}
+    <h1>Edit ContratComedien</h1>
+
+    {{ include('contrat_comedien/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_contrat_comedien_index') }}">back to list</a>
+
+    {{ include('contrat_comedien/_delete_form.html.twig') }}
+{% endblock %}

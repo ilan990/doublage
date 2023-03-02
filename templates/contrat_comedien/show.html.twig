@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ContratComedien{% endblock %}
+
+{% block body %}
+    <h1>ContratComedien</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id_contrat_comedien</th>
+                <td>{{ contrat_comedien.idContratComedien }}</td>
+            </tr>
+            <tr>
+                <th>Creation_contrat</th>
+                <td>{{ contrat_comedien.creationContrat ? contrat_comedien.creationContrat|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_debut</th>
+                <td>{{ contrat_comedien.dateDebut ? contrat_comedien.dateDebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_fin</th>
+                <td>{{ contrat_comedien.dateFin ? contrat_comedien.dateFin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Production</th>
+                <td>{{ contrat_comedien.production }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ contrat_comedien.titre }}</td>
+            </tr>
+            <tr>
+                <th>Nom_personnage</th>
+                <td>{{ contrat_comedien.nomPersonnage }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ contrat_comedien.prenom }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_contrat_comedien_index') }}">back to list</a>
+
+    <a href="{{ path('app_contrat_comedien_edit', {'id_contrat_comedien': contrat_comedien.id_contrat_comedien}) }}">edit</a>
+
+    {{ include('contrat_comedien/_delete_form.html.twig') }}
+{% endblock %}

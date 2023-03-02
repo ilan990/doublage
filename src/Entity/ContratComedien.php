@@ -42,10 +42,8 @@ class ContratComedien
     private ?string $titre = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $nom_personnage = null;
+    private ?string $roleComedien = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $prenom = null;
 
     public function getIdContrat(): ?int
     {
@@ -161,27 +159,37 @@ class ContratComedien
         return $this;
     }
 
-    public function getNomPersonnage(): ?string
+    /**
+     * @return int|null
+     */
+    public function getIdContratComedien(): ?int
     {
-        return $this->nom_personnage;
+        return $this->id_contrat_comedien;
     }
 
-    public function setNomPersonnage(?string $nom_personnage): self
+    /**
+     * @param int|null $id_contrat_comedien
+     */
+    public function setIdContratComedien(?int $id_contrat_comedien): void
     {
-        $this->nom_personnage = $nom_personnage;
-
-        return $this;
+        $this->id_contrat_comedien = $id_contrat_comedien;
     }
 
-    public function getPrenom(): ?string
+    /**
+     * @return string|null
+     */
+    public function getRoleComedien(): ?string
     {
-        return $this->prenom;
+        return $this->roleComedien;
     }
 
-    public function setPrenom(?string $prenom): self
+    /**
+     * @param string|null $roleComedien
+     */
+    public function setRoleComedien(?string $roleComedien): void
     {
-        $this->prenom = $prenom;
-
-        return $this;
+        $this->roleComedien = $roleComedien;
     }
+
+
 }

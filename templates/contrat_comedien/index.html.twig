@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ContratComedien index{% endblock %}
+
+{% block body %}
+    <h1>ContratComedien index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id_contrat_comedien</th>
+                <th>Creation_contrat</th>
+                <th>Date_debut</th>
+                <th>Date_fin</th>
+                <th>Production</th>
+                <th>Titre</th>
+                <th>Nom_personnage</th>
+                <th>Prenom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for contrat_comedien in contrat_comediens %}
+            <tr>
+                <td>{{ contrat_comedien.idContratComedien }}</td>
+                <td>{{ contrat_comedien.creationContrat ? contrat_comedien.creationContrat|date('Y-m-d') : '' }}</td>
+                <td>{{ contrat_comedien.dateDebut ? contrat_comedien.dateDebut|date('Y-m-d') : '' }}</td>
+                <td>{{ contrat_comedien.dateFin ? contrat_comedien.dateFin|date('Y-m-d') : '' }}</td>
+                <td>{{ contrat_comedien.production }}</td>
+                <td>{{ contrat_comedien.titre }}</td>
+                <td>{{ contrat_comedien.nomPersonnage }}</td>
+                <td>{{ contrat_comedien.prenom }}</td>
+                <td>
+                    <a href="{{ path('app_contrat_comedien_show', {'id_contrat_comedien': contrat_comedien.id_contrat_comedien}) }}">show</a>
+                    <a href="{{ path('app_contrat_comedien_edit', {'id_contrat_comedien': contrat_comedien.id_contrat_comedien}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="9">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_contrat_comedien_new') }}">Create new</a>
+{% endblock %}
