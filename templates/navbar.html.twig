@@ -1,7 +1,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">DubbingDub</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -15,19 +15,18 @@
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Dropdown
+                        Contrats
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li class="nav-item "><a class="nav-link hover-nav {% if app.request.attributes.get('_route') == 'app_contrat_comedien_index' %} active {% endif %}" href="{{ path('app_contrat_comedien_index') }}">Comédiens</a></li>
+                        <li class="nav-item "><a class="nav-link hover-nav {% if app.request.attributes.get('_route') == 'app_contrat_comedien_index' %} active {% endif %}" href="{{ path('app_contrat_comedien_index') }}">D.A</a></li>
+
                     </ul>
                 </li>
 
             </ul>
-            <div class="d-flex">
 
+            <div>
                 <img
                         src="{{ asset('images/avatar/' ~ app.user.avatar ) }}"
                         class="rounded-circle me-2"
@@ -36,6 +35,7 @@
                         loading="lazy"
                 />
             </div>
+            <li style=""><a class="btn btn-danger btn-sm" href="{{ path('security.logout') }}">Déconnexion</a></li>
         </div>
     </div>
 </nav>
