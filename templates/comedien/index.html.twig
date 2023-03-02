@@ -4,9 +4,9 @@
 
 {% block body %}
 
-    <div class="row d-flex justify-content-center">
+    <div class="container d-flex justify-content-center">
     {% for comedien in comediens %}
-        <div class="col-md-2 mx-4 my-4">
+        <div class="col-md-2 col-sm-6 mx-4 my-4">
             <div class="card" style="width: 14rem;">
                 <img src="{{ asset('images/avatar/' ~ comedien.imageName) }}" class="card-img-top" style="height:200px;width: auto"  alt="...">
                 <div class="card-body">
@@ -14,13 +14,13 @@
                     <p class="card-text">{{ comedien.tauxjournalier }} € / Jour</p>
                 </div>
                 <div class="card-body">
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="{{ path('app_comedien_show', {'id_comedien': comedien.idComedien}) }}">show</a>
+                    <a href="{{ path('app_contrat_comedien_new', {'id_comedien': comedien.idComedien}) }}" class="btn btn-primary btn-sm">Ajouter un contrat</a>
+                    <a class='btn btn-primary btn-sm' href="{{ path('app_comedien_show', {'id_comedien': comedien.idComedien}) }}">Voir</a>
                 </div>
             </div>
         </div>
         {% if loop.index % 5 == 0 %}
-            </div><div class="row d-flex justify-content-center">
+            </div><div class="container d-flex justify-content-center">
         {% endif %}
     {% else %}
         <tr>
