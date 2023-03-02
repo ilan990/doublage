@@ -3,7 +3,7 @@ body{
     margin: 0;
 }
 
-label,input,.btn,h1{
+label,.btn,h1{
     color:white
 }
 .login-label,.login-btn{
@@ -19,7 +19,9 @@ label,input,.btn,h1{
     font-size: 14px;
     margin-top: 5px;
 }
-
+li{
+    list-style-type: none;
+}
 ul {
     list-style-type: none;
     margin-bottom: 5px;
