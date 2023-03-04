@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Comedien;
 use App\Entity\ContratComedien;
-use App\Entity\Da;
 use App\Form\ContratComedienType;
 use App\Repository\ComedienRepository;
 use App\Repository\ContratComedienRepository;
@@ -19,10 +17,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
 class ContratComedienController extends AbstractController
 {
     #[Route('/', name: 'app_contrat_comedien_index', methods: ['GET'])]
-    public function index(ContratComedienRepository $contratComedienRepository): Response
+    public function index(ContratComedienRepository $contratComedienRepository,UserInterface $user): Response
     {
         return $this->render('contrat_comedien/index.html.twig', [
-            'contrat_comediens' => $contratComedienRepository->findAll(),
+            'contrat_comediens' => $contratComedienRepository->findBy(['id_da' => $user->getIdDa() ]),
         ]);
     }
 
@@ -42,7 +40,22 @@ class ContratComedienController extends AbstractController
             $contratComedien->setIdDa($da);
             $contratComedien->setIdComedien($comedien);
             $contratComedien->setCreationContrat(new \DateTimeImmutable());
-            $contratComedienRepository->save($contratComedien, true);
+
+            $existingContratComedien = $contratComedienRepository->findOneBy([
+                'id_da' => $da,
+                'id_comedien' => $comedien,
+                'titre' => $contratComedien->getTitre(),
+                'roleComedien' => $contratComedien->getRoleComedien(),
+                ]);
+
+            if ($existingContratComedien) {
+                // Traiter le cas où une ligne avec les mêmes valeurs existe déjà
+                // ...
+            } else {
+                // Enregistrer le nouveau contrat dans la base de données
+                $contratComedienRepository->save($contratComedien, true);
+                return $this->redirectToRoute('app_contrat_comedien_index', [], Response::HTTP_SEE_OTHER);
+            }
 
             return $this->redirectToRoute('app_contrat_comedien_index', [], Response::HTTP_SEE_OTHER);
         }
