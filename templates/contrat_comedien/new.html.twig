@@ -1,8 +1,9 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Nouveau Contrat{% endblock %}
-
+{% block javascripts %}{% endblock %}
 {% block body %}
+
 <div class="container container-sm">
     <div class="row justify-content-center align-items-center" style="height:100vh">
         <div class="col-lg-6 col-md-12">
@@ -37,7 +38,7 @@
             {{ form_row(form.roleComedien) }}
             <div class="cache-message d-flex justify-content-between">
                 <a class="btn btn-danger" href="{{ path('app_contrat_comedien_index') }}">Retour à la liste</a>
-                {{ form_row(form.submit) }}
+                {{ form_row(form.submit, {'attr': {'id': 'submit-btn'}}) }}
             </div>
 
             {{ form_end(form) }}
@@ -45,4 +46,5 @@
 
         </div>
     </div>
+
 {% endblock %}
