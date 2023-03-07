@@ -1,52 +1,43 @@
 <?php
 namespace App\DataFixtures;
 
-use App\Entity\Comedien;
-use Doctrine\Bundle\FixturesBundle\Fixture;
+
+use App\Entity\Production;
 use Doctrine\Persistence\ObjectManager;
-use Faker\Factory;
-use DateTimeImmutable;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 
 
-class ComedienFixtures extends Fixture
+class ProductionFixtures extends Fixture
 {
-
 
     public function load(ObjectManager $manager):void
     {
-        $faker = Factory::create('fr_FR');
+        $production = new Production();
+        $production-> setLibelle('Netflix');
+        $manager -> persist($production);
 
-        $context = stream_context_create([
-            'ssl' => [
-                'verify_peer' => false,
-                'verify_peer_name' => false
-            ]
-        ]);
-        for ($i = 0; $i < 49; $i++ ){
+        $production = new Production();
+        $production-> setLibelle('Amazon Prime Video');
+        $manager -> persist($production);
 
-            $comedien = new Comedien();
-            $sexe = $faker->randomElement(['Homme', 'Femme']);
-            $comedien -> setSexe($sexe);
-            $sexe === "Homme" ? $prenom = $faker ->firstNameMale : $prenom = $faker ->firstNameFemale;
+        $production = new Production();
+        $production-> setLibelle('Disney+');
+        $manager -> persist($production);
 
-            $nom = $faker -> lastName;
-            $format = '06 ## ## ## ##'; // format du numéro de téléphone
-            $numero = $faker->numerify($format);
+        $production = new Production();
+        $production-> setLibelle('HBO');
+        $manager -> persist($production);
 
-            $comedien -> setPrenom($prenom);
-            $comedien -> setNom($nom);
+        $production = new Production();
+        $production-> setLibelle('AppleTv');
+        $manager -> persist($production);
+
+        $production = new Production();
+        $production-> setLibelle('Warner Bros');
+        $manager -> persist($production);
 
 
-
-            $comedien -> setEmail($prenom.".".$nom."@gmail.com");
-            $comedien -> setAge(rand(18,75));
-            $comedien -> setTelephone($numero);
-            $comedien -> setTauxJournalier(rand(4, 20) * 25);
-            $comedien -> setUpdatedAt(new DateTimeImmutable());
-
-        }
         $manager->flush();
-
     }
 
 }
