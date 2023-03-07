@@ -22,9 +22,6 @@ class ContratComedien
     #[ORM\JoinColumn(name: 'id_da', referencedColumnName: 'id_da')]
     private Da|null $id_da = null;
 
-    #[ORM\ManyToOne(targetEntity: ContratDa::class)]
-    #[ORM\JoinColumn(name: 'id_contrat_da', referencedColumnName: 'id_contrat_da')]
-    private ContratDa|null $id_contrat_da = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $creation_contrat = null;
@@ -36,7 +33,7 @@ class ContratComedien
     private ?\DateTimeInterface $date_fin = null;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $production = null;
+    private ?int $production = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $titre = null;
@@ -44,6 +41,9 @@ class ContratComedien
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $roleComedien = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(name: 'id_role', referencedColumnName: 'id_role')]
+    private ?Role $id_role = null;
 
     public function getIdContrat(): ?int
     {
@@ -80,22 +80,6 @@ class ContratComedien
     public function setIdDa(?Da $id_da): void
     {
         $this->id_da = $id_da;
-    }
-
-    /**
-     * @return ContratDa|null
-     */
-    public function getIdContratDa(): ?ContratDa
-    {
-        return $this->id_contrat_da;
-    }
-
-    /**
-     * @param ContratDa|null $id_contrat_da
-     */
-    public function setIdContratDa(?ContratDa $id_contrat_da): void
-    {
-        $this->id_contrat_da = $id_contrat_da;
     }
 
 
@@ -189,6 +173,22 @@ class ContratComedien
     public function setRoleComedien(?string $roleComedien): void
     {
         $this->roleComedien = $roleComedien;
+    }
+
+    /**
+     * @return Role|null
+     */
+    public function getIdRole(): ?Role
+    {
+        return $this->id_role;
+    }
+
+    /**
+     * @param Role|null $id_role
+     */
+    public function setIdRole(?Role $id_role): void
+    {
+        $this->id_role = $id_role;
     }
 
 

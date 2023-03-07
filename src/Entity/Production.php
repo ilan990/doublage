@@ -14,14 +14,7 @@ class Production
     private ?int $id_production = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nom = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $email = null;
-
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $avatar = null;
+    private ?string $libelle = null;
 
     /**
      * @return int|null
@@ -32,55 +25,25 @@ class Production
     }
 
 
-    /**
-     * @return string|null
-     */
-    public function getNom(): ?string
+    public function getLibelle(): ?string
     {
-        return $this->nom;
+        return $this->libelle;
+    }
+
+    public function setLibelle(string $libelle): self
+    {
+        $this->libelle = $libelle;
+
+        return $this;
     }
 
     /**
-     * @param string|null $nom
+     * @param int|null $id_production
      */
-    public function setNom(?string $nom): void
+    public function setIdProduction(?int $id_production): void
     {
-        $this->nom = $nom;
+        $this->id_production = $id_production;
     }
-
-    /**
-     * @return string|null
-     */
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    /**
-     * @param string|null $email
-     */
-    public function setEmail(?string $email): void
-    {
-        $this->email = $email;
-    }
-
-    /**
-     * @return string|null
-     */
-    public function getAvatar(): ?string
-    {
-        return $this->avatar;
-    }
-
-    /**
-     * @param string|null $avatar
-     */
-    public function setAvatar(?string $avatar): void
-    {
-        $this->avatar = $avatar;
-    }
-
-
 
 
 }
