@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New ContratDa{% endblock %}
+
+{% block body %}
+    <h1>Create new ContratDa</h1>
+
+    {{ include('contrat_da/_form.html.twig') }}
+
+    <a href="{{ path('app_contrat_da_index') }}">back to list</a>
+{% endblock %}

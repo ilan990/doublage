@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ContratDa{% endblock %}
+
+{% block body %}
+    <h1>ContratDa</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id_contrat_da</th>
+                <td>{{ contrat_da.idContratDa }}</td>
+            </tr>
+            <tr>
+                <th>Creation_contrat</th>
+                <td>{{ contrat_da.creationContrat ? contrat_da.creationContrat|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_debut</th>
+                <td>{{ contrat_da.dateDebut ? contrat_da.dateDebut|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_fin</th>
+                <td>{{ contrat_da.dateFin ? contrat_da.dateFin|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ contrat_da.titre }}</td>
+            </tr>
+            <tr>
+                <th>Nbre_role</th>
+                <td>{{ contrat_da.nbreRole }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_contrat_da_index') }}">back to list</a>
+
+    <a href="{{ path('app_contrat_da_edit', {'id_contrat_da': contrat_da.id_contrat_da}) }}">edit</a>
+
+    {{ include('contrat_da/_delete_form.html.twig') }}
+{% endblock %}
