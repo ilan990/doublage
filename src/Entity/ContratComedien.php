@@ -32,15 +32,6 @@ class ContratComedien
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_fin = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?int $production = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $titre = null;
-
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $roleComedien = null;
-
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(name: 'id_role', referencedColumnName: 'id_role')]
     private ?Role $id_role = null;
@@ -119,30 +110,6 @@ class ContratComedien
         return $this;
     }
 
-    public function getProduction(): ?string
-    {
-        return $this->production;
-    }
-
-    public function setProduction(?string $production): self
-    {
-        $this->production = $production;
-
-        return $this;
-    }
-
-    public function getTitre(): ?string
-    {
-        return $this->titre;
-    }
-
-    public function setTitre(?string $titre): self
-    {
-        $this->titre = $titre;
-
-        return $this;
-    }
-
     /**
      * @return int|null
      */
@@ -159,21 +126,6 @@ class ContratComedien
         $this->id_contrat_comedien = $id_contrat_comedien;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getRoleComedien(): ?string
-    {
-        return $this->roleComedien;
-    }
-
-    /**
-     * @param string|null $roleComedien
-     */
-    public function setRoleComedien(?string $roleComedien): void
-    {
-        $this->roleComedien = $roleComedien;
-    }
 
     /**
      * @return Role|null
