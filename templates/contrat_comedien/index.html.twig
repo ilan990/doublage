@@ -12,9 +12,6 @@
                 <th>Creation_contrat</th>
                 <th>Date_debut</th>
                 <th>Date_fin</th>
-                <th>Production</th>
-                <th>Titre</th>
-                <th>Rôle</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -25,9 +22,9 @@
                 <td>{{ contrat_comedien.creationContrat ? contrat_comedien.creationContrat|date('Y-m-d') : '' }}</td>
                 <td>{{ contrat_comedien.dateDebut ? contrat_comedien.dateDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ contrat_comedien.dateFin ? contrat_comedien.dateFin|date('Y-m-d') : '' }}</td>
-                <td>{{ contrat_comedien.production }}</td>
-                <td>{{ contrat_comedien.titre }}</td>
-                <td>{{ contrat_comedien.roleComedien }}</td>
+
+
+
 
                 <td>
                     <a href="{{ path('app_contrat_comedien_show', {'id_contrat_comedien': contrat_comedien.idContratComedien}) }}">show</a>
