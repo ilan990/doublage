@@ -38,6 +38,13 @@ class ContratDa
     #[ORM\Column(nullable: true)]
     private ?int $nbre_role = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $montant = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $imgFilm = null;
+
+
     /**
      * @return int|null
      */
@@ -164,6 +171,38 @@ class ContratDa
     public function setNbreRole(?int $nbre_role): void
     {
         $this->nbre_role = $nbre_role;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getMontant(): ?int
+    {
+        return $this->montant;
+    }
+
+    /**
+     * @param int|null $montant
+     */
+    public function setMontant(?int $montant): void
+    {
+        $this->montant = $montant;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getImgFilm(): ?string
+    {
+        return $this->imgFilm;
+    }
+
+    /**
+     * @param string|null $imgFilm
+     */
+    public function setImgFilm(?string $imgFilm): void
+    {
+        $this->imgFilm = $imgFilm;
     }
 
 
