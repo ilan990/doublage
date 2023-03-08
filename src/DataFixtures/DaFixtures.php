@@ -2,13 +2,14 @@
 namespace App\DataFixtures;
 
 use App\Entity\Da;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 
-class DaFixtures extends Fixture
+class DaFixtures extends Fixture implements FixtureGroupInterface
 {
     public function __construct(
             private UserPasswordHasherInterface $hasher
@@ -35,5 +36,8 @@ class DaFixtures extends Fixture
             $manager -> persist($da);
             $manager->flush();
     }
-
+    public static function getGroups(): array
+    {
+        return ['group1'];
+    }
 }

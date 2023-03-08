@@ -5,12 +5,13 @@ namespace App\DataFixtures;
 use App\Entity\ContratDa;
 use App\Entity\Role;
 use App\Repository\ContratDaRepository;
+use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Faker\Factory;
 
 
-class RoleFixtures extends Fixture
+class RoleFixtures extends Fixture implements FixtureGroupInterface
 {
     private $contratDaRepository;
 
@@ -44,10 +45,8 @@ class RoleFixtures extends Fixture
 
         $manager->flush();
     }
-    public function getDependencies()
+    public static function getGroups(): array
     {
-        return [
-            ContratDaFixtures::class,
-        ];
+        return ['group2'];
     }
 }
