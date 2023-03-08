@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\Role;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\ResultSetMapping;
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -37,6 +39,23 @@ class RoleRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+    public function findIdDaByContratDa($value): int
+    {
+        $entityManager = $this->getEntityManager();
+
+        $sql = 'SELECT cd.id_da 
+                FROM contrat_da cd 
+                INNER JOIN role r ON cd.id_contrat_da = r.id_contrat_da 
+                WHERE r.id_role = :id';
+
+        $rsm = new ResultSetMappingBuilder($entityManager);
+        $rsm->addScalarResult('id_da', 'id_da');
+
+        $query = $entityManager->createNativeQuery($sql, $rsm);
+        $query->setParameter('id', $value);
+
+        return $query->getSingleScalarResult();
     }
 
 //    /**
