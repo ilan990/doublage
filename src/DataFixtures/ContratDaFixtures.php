@@ -53,15 +53,16 @@ class ContratDaFixtures extends Fixture implements FixtureGroupInterface
                 ['id_da' => rand(1, 2)],
             );
 
-            $contratDa->setIdDa($this->daRepository->find(rand(1, 2)));
-            $contratDa->setIdProduction($this->productionRepository->find(rand(1, 6 )));
-            $contratDa->setCreationContrat($creationContrat);
-            $contratDa->setDateDebut($dateDebut);
-            $contratDa->setDateFin($dateFin);
-            $contratDa->setTitre($titre[$i]);
-            $contratDa->setNbreRole(rand(5, 10));
-            $contratDa->setMontant(round(rand(60000,300000),-3));
-            $manager->persist($contratDa);
+            $contratDa -> setIdDa($this->daRepository->find(rand(1, 2)));
+            $contratDa -> setIdProduction($this->productionRepository->find(rand(1, 6 )));
+            $contratDa -> setCreationContrat($creationContrat);
+            $contratDa -> setDateDebut($dateDebut);
+            $contratDa -> setDateFin($dateFin);
+            $contratDa -> setTitre($titre[$i]);
+            $contratDa -> setImgFilm($imgFilm[$i]);
+            $contratDa -> setNbreRole(rand(5, 10));
+            $contratDa -> setMontant(round(rand(60000,300000),-3));
+            $manager   -> persist($contratDa);
 
             $manager->flush();
         }
