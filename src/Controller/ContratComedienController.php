@@ -7,6 +7,7 @@ use App\Form\ContratComedienType;
 use App\Repository\ComedienRepository;
 use App\Repository\ContratComedienRepository;
 use App\Repository\DaRepository;
+use App\Repository\RoleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,14 +26,21 @@ class ContratComedienController extends AbstractController
     }
 
     #[Route('/new/{id_comedien}', name: 'app_contrat_comedien_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, ContratComedienRepository $contratComedienRepository,DaRepository $daRepository, ComedienRepository $comedienRepository,UserInterface $user): Response
+    public function new(Request $request,RoleRepository $roleRepository, ContratComedienRepository $contratComedienRepository,DaRepository $daRepository, ComedienRepository $comedienRepository,UserInterface $user): Response
     {
-        $id_comedien = $request->attributes->get('id_comedien');
-        $comedien = $comedienRepository->find($id_comedien);
         $da = $daRepository->find($user->getIdDa());
 
+        $roles = $roleRepository ->findAllRolesByDa($da ->getIdDa());
+
+        $id_comedien = $request->attributes->get('id_comedien');
+        $comedien = $comedienRepository->find($id_comedien);
+
+
         $contratComedien = new ContratComedien();
-        $form = $this->createForm(ContratComedienType::class, $contratComedien);
+
+        $form = $this->createForm(ContratComedienType::class, $contratComedien,[
+            'roles' => $roles,
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -64,6 +72,7 @@ class ContratComedienController extends AbstractController
             'comedien' => $comedien,
             'contrat_comedien' => $contratComedien,
             'form' => $form,
+            'roles'=>$roles,
         ]);
     }
 

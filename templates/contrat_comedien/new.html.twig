@@ -33,9 +33,8 @@
                 <div class="cache-message col-sm-12 col-lg-6">
                     {{ form_row(form.date_fin) }}
                 </div>
-            {{ form_row(form.production) }}
-            {{ form_row(form.titre) }}
-            {{ form_row(form.roleComedien) }}
+            {{ form_row(form.id_role) }}
+
             <div class="cache-message d-flex justify-content-between">
                 <a class="btn btn-danger" href="{{ path('app_contrat_comedien_index') }}">Retour à la liste</a>
                 {{ form_row(form.submit, {'attr': {'id': 'submit-btn'}}) }}

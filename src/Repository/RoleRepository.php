@@ -57,6 +57,27 @@ class RoleRepository extends ServiceEntityRepository
 
         return $query->getSingleScalarResult();
     }
+    public function findAllRolesByDa(int $value): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $sql = 'SELECT r.id_role,r.nom 
+                FROM contrat_da cd 
+                    INNER JOIN da d ON d.id_da = cd.id_da 
+                    INNER JOIN role r on r.id_contrat_da = cd.id_contrat_da 
+                    LEFT JOIN contrat_comedien cc ON cc.id_role = r.id_role 
+                WHERE d.id_da = :id 
+                  AND r.id_role NOT IN ( SELECT id_role FROM contrat_comedien);';
+
+        $rsm = new ResultSetMappingBuilder($entityManager);
+
+        $rsm->addScalarResult('id_role', 'id_role');
+        $rsm->addScalarResult('nom', 'nom');
+        $query = $entityManager->createNativeQuery($sql, $rsm);
+        $query->setParameter('id', $value);
+
+        return $query->getResult();
+    }
 
 //    /**
 //     * @return Role[] Returns an array of Role objects

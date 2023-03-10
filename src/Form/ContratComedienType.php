@@ -4,8 +4,8 @@ namespace App\Form;
 
 use App\Entity\ContratComedien;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -38,16 +38,17 @@ class ContratComedienType extends AbstractType
                     new Callback([$this, 'validateEndDate']),
                 ],
             ])
-            ->add('production', TextType::class, [
-                'label' => 'Production',
-                'attr' => ['class' => 'form-control mb-3']])
-            ->add('titre', TextType::class, [
-                'label' => 'Titre',
-                'attr' => ['class' => 'form-control mb-3']])
-            ->add('roleComedien',TextType::class, [
-                'label' => 'Role du Comédien',
-                'attr' => ['class' => 'form-control mb-3']])
-            ->add('submit', SubmitType::class, [
+
+            ->add('id_role', ChoiceType::class, [
+                'label' => 'Role',
+                'attr' => ['class' => 'form-control mb-3'],
+                'choices' => $options['roles'],
+                'choice_label' => 'nom',
+                'choice_value' => 'id_role',
+                'placeholder' => 'Choisissez un rôle',])
+
+
+        ->add('submit', SubmitType::class, [
                 'label' => 'Suivant',
                 'attr' => ['class' => 'btn btn-secondary'],
             ]);
@@ -70,6 +71,7 @@ class ContratComedienType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ContratComedien::class,
+            'roles' => [],
         ]);
     }
 }
