@@ -5,19 +5,39 @@ namespace App\Controller;
 use App\Entity\ContratDa;
 use App\Form\ContratDaType;
 use App\Repository\ContratDaRepository;
+use App\Repository\ProductionRepository;
+use Doctrine\Persistence\ManagerRegistry;
+use PDO;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 #[Route('/contrat/da')]
 class ContratDaController extends AbstractController
 {
+
+
     #[Route('/', name: 'app_contrat_da_index', methods: ['GET'])]
-    public function index(ContratDaRepository $contratDaRepository): Response
+    public function index(ContratDaRepository $contratDaRepository, ManagerRegistry $registry, ProductionRepository $productionRepository,UserInterface $user): Response
     {
+        $conn = $registry->getConnection();
+
+        $qb = $conn->createQueryBuilder();
+        $qb->select('cd.*, p.libelle')
+            ->from('contrat_da', 'cd')
+            ->innerJoin('cd', 'production', 'p', 'p.id_production = cd.id_production')
+            ->where('cd.id_da = :id_da')
+            ->setParameter('id_da', $user->getIdDa());
+
+        $stmt = $qb->execute();
+
+        $contratDa = $stmt->fetchAllAssociative();
+
+
         return $this->render('contrat_da/index.html.twig', [
-            'contrat_das' => $contratDaRepository->findAll(),
+            'contrat_das' => $contratDa,
         ]);
     }
 
