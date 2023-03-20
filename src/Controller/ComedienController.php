@@ -77,7 +77,7 @@ class ComedienController extends AbstractController
     #[Route('/{id_comedien}', name: 'app_comedien_delete', methods: ['POST'])]
     public function delete(Request $request, Comedien $comedien, ComedienRepository $comedienRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$comedien->getId_comedien(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$comedien->getIdComedien(), $request->request->get('_token'))) {
             $comedienRepository->remove($comedien, true);
         }
 
