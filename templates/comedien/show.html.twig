@@ -3,56 +3,29 @@
 {% block title %}Comedien{% endblock %}
 
 {% block body %}
-    <h1>Comedien</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id_comedien</th>
-                <td>{{ comedien.idComedien }}</td>
-            </tr>
-            <tr>
-                <th>ImageName</th>
-                <td>{{ comedien.imageName }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ comedien.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ comedien.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ comedien.telephone }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ comedien.email }}</td>
-            </tr>
-            <tr>
-                <th>Age</th>
-                <td>{{ comedien.age }}</td>
-            </tr>
-            <tr>
-                <th>Sexe</th>
-                <td>{{ comedien.sexe }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ comedien.type }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ comedien.updatedAt ? comedien.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class=" showContainer mt-5 d-flex align-items-center justify-content-center pt-5" >
 
-    <a href="{{ path('app_comedien_index') }}">back to list</a>
+        <div class="col text-center">
+            <img class="col" src="{{ asset('images/avatar/' ~ comedien.imageName) }}"  style= "height:20%" alt="">
+        </div>
 
-    <a href="{{ path('app_comedien_edit', {'id_comedien': comedien.idComedien}) }}">edit</a>
+        <div class="col showContainerText ">
+            <h1>{{ comedien.nom }} {{ comedien.prenom }}</h1>
+            <h3>{{ comedien.telephone }}</h3>
+            <h3>{{ comedien.age }} ans</h3>
+            <h3>{{ comedien.sexe }}</h3>
+            <h3>{{ comedien.type }}</h3>
+            <h3>{{ comedien.tauxjournalier }} € / Jour</h3>
+            <div class="d-flex ">
+                <a class=" col-4  btn btn-primary " href="{{ path('app_comedien_index') }}">Retour à la liste</a>
+                <a class=" col-4  btn btn-primary mx-5" href="{{ path('app_comedien_edit', {'id_comedien': comedien.idComedien}) }}">Modifier</a>
+
+            </div>
+             </div>
+    </div>
+
+
 
 {#    {{ include('comedien/_delete_form.html.twig') }}#}
 {% endblock %}
