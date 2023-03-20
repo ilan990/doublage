@@ -105,7 +105,7 @@ class ContratComedienController extends AbstractController
     #[Route('/{id_contrat_comedien}', name: 'app_contrat_comedien_delete', methods: ['POST'])]
     public function delete(Request $request, ContratComedien $contratComedien, ContratComedienRepository $contratComedienRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$contratComedien->getId_contrat_comedien(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$contratComedien->getIdContratComedien(), $request->request->get('_token'))) {
             $contratComedienRepository->remove($contratComedien, true);
         }
 
