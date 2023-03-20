@@ -3,15 +3,14 @@
 {% block title %}ContratComedien index{% endblock %}
 {% block javascripts %}{% endblock %}
 {% block body %}
-    <h1>Tous vos contrats avec les comédiens</h1>
 
-    <table class="table">
+<div class="mt-5" style="height:85vh;width:100vw;">
+    <table class="container table table-dark" >
         <thead>
             <tr>
-                <th>Id_contrat_comedien</th>
-                <th>Creation_contrat</th>
-                <th>Date_debut</th>
-                <th>Date_fin</th>
+                <th>Id</th>
+                <th>Date de début</th>
+                <th>Date de fin</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -19,9 +18,9 @@
         {% for contrat_comedien in contrat_comediens %}
             <tr>
                 <td>{{ contrat_comedien.idContratComedien }}</td>
-                <td>{{ contrat_comedien.creationContrat ? contrat_comedien.creationContrat|date('Y-m-d') : '' }}</td>
                 <td>{{ contrat_comedien.dateDebut ? contrat_comedien.dateDebut|date('Y-m-d') : '' }}</td>
                 <td>{{ contrat_comedien.dateFin ? contrat_comedien.dateFin|date('Y-m-d') : '' }}</td>
+
 
 
 
@@ -38,6 +37,6 @@
         {% endfor %}
         </tbody>
     </table>
-
+</div>
 
 {% endblock %}
