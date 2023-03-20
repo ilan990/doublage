@@ -42,7 +42,7 @@ class ComedienFixtures extends Fixture implements FixtureGroupInterface
             $comedien -> setEmail($prenom.".".$nom."@gmail.com");
             $comedien -> setAge(rand(18,75));
             $comedien -> setTelephone($numero);
-            $comedien -> setTauxJournalier(rand(4, 20) * 25);
+            $comedien -> setTauxJournalier(rand(10, 35) * 25);
             $comedien -> setUpdatedAt(new DateTimeImmutable());
 
 
