@@ -32,7 +32,7 @@ class ContratComedien
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_fin = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne]
     #[ORM\JoinColumn(name: 'id_role', referencedColumnName: 'id_role')]
     private ?Role $id_role = null;
 
