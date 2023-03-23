@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\ContratDa;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query\ResultSetMappingBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -37,6 +38,19 @@ class ContratDaRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+    public function CaByYearAndDa(int $value): array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $sql = 'SELECT * FROM contrat_da where YEAR(date_debut) = YEAR(NOW()) and id_da = :id ;';
+
+        $rsm = new ResultSetMappingBuilder($entityManager);
+
+        $query = $entityManager->createNativeQuery($sql, $rsm);
+        $query->setParameter('id', $value);
+
+        return $query->getResult();
     }
 
 //    /**

@@ -2,3 +2,61 @@
 
 {% block title %}Accueil{% endblock %}
 
+{% block body %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+
+<!-- En quelques chiffre -->
+<p class="Chiffre1 mb-5" style="color: white">En Quelques Chiffres</p>
+
+<style>
+    .Compteurs h2{
+        color: white;
+    }
+</style>
+<div class="Block1">
+
+    <div class="Compteurs">
+        <i class="fa fa-bell fa-2x"></i>
+        <h2 class="timer count-title count-number" data-to="300" data-speed="1500">{{ roles|length }}</h2>
+        <h2 class="count-text ">Role sans comédiens</h2>
+    </div>
+
+    <div>
+        <hr class="separation" />
+    </div>
+
+    <div class="Compteurs">
+        <i class="fa fa-eye fa-2x"></i>
+        <h2 class="timer count-title count-number" data-to="1700" data-speed="1500">489</h2>
+        <h2 class="count-text ">Visiteurs Uniques</h2>
+    </div>
+
+    <div>
+        <hr class="separation" />
+    </div>
+
+
+    {% set currentYear = "now"|date('Y') %}
+    {% set caMontant = 0 %}
+
+    {% for ca in cas %}
+      {% if date(ca.dateDebut)|date('Y') == currentYear %}
+    {% set caMontant = caMontant + ca.montant%}
+        {% endif %}
+    {% endfor %}
+    <div class="Compteurs">
+        <i class="fa fa-money fa-2x"></i>
+        <h2 class="timer count-title count-number" style="color: white" data-to="157" data-speed="1500"><?php echo $compteurmembre; ?>
+            {{ caMontant }}€</h2>
+        <h2 class="count-text " style="color: white">Chiffres d'affaires {{ currentYear }}</h2>
+    </div>
+
+
+
+</div>
+
+
+
+{% endblock %}

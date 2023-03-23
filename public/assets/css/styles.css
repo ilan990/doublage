@@ -40,3 +40,68 @@ li a{
 .showContainerText h3{
     color: #FFFFFF;
 }
+
+
+/* accueil */
+.wrapper { text-align: center; width: 980px; margin: 30px auto; position: relative;}
+.counter { background-color: #ffffff; padding: 20px 0; border-radius: 5px;}
+.count-title { font-size: 40px; font-weight: normal;  margin-top: 10px; margin-bottom: 0; text-align: center; }
+.count-text { font-size: 13px; font-weight: normal;  margin-top: 10px; margin-bottom: 0; text-align: center; }
+.fa-2x { margin: 0 auto; float: none; display: table; color: #4ad1e5; }
+
+.Chiffre1 {
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 0px;
+
+}
+
+.Compteurs {
+    margin-top: 10px;
+    text-align: center;
+    width: 280px;
+    height: 150px;
+    border-radius: 20px;
+
+
+}
+
+.Compteurs2 {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    width: 280px;
+    height: 150px;
+    border-radius: 20px;
+
+
+}
+
+.Block1 {
+    text-align: center;
+    margin-right: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.Chiffre2 {
+    margin-top: 0px;
+    text-align: center;
+    font-size: 25px;
+
+}
+
+
+.separation{
+    clear: both;
+    position: absolute;
+    margin-top :0px;
+    height: 150px;
+    width : 1px;
+    background: #bec0c4;
+}
