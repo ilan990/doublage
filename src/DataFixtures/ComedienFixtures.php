@@ -47,18 +47,18 @@ class ComedienFixtures extends Fixture implements FixtureGroupInterface
 
 
             // Utilisation de la unsplash LoremPixel pour générer des images aléatoires
-//            $access_key = 'Nk5l75fEO8Iz2SjGoZfH1Hk7csYI4fCVBYpDwWIesHc';
-//
-//            $image_url = sprintf('https://api.unsplash.com/photos/random?query=%s&orientation=squarish&client_id=%s', $sexe === 'Homme' ? 'man' : 'woman', $access_key);
-//            $image_json = file_get_contents($image_url);
-//            $image_data = json_decode($image_json, true);
-//            $avatar_url = $image_data['urls']['small'];
-//            $avatar_content = file_get_contents($avatar_url);
-//            $avatar_name = sprintf('%s_%s_%s.jpg', $prenom, $nom, $sexe);
-//            $avatar_dir = dirname(__DIR__,2) . '\public\images\avatar\\';
-//            file_put_contents($avatar_dir . $avatar_name, $avatar_content);
-//            $comedien->setImageName($avatar_name);
-            $comedien->setImageName("inconnu.jpg");
+            $access_key = 'Nk5l75fEO8Iz2SjGoZfH1Hk7csYI4fCVBYpDwWIesHc';
+
+            $image_url = sprintf('https://api.unsplash.com/photos/random?query=%s&orientation=squarish&client_id=%s', $sexe === 'Homme' ? 'man' : 'woman', $access_key);
+            $image_json = file_get_contents($image_url);
+            $image_data = json_decode($image_json, true);
+            $avatar_url = $image_data['urls']['small'];
+            $avatar_content = file_get_contents($avatar_url);
+            $avatar_name = sprintf('%s_%s_%s.jpg', $prenom, $nom, $sexe);
+            $avatar_dir = dirname(__DIR__,2) . '\public\images\avatar\\';
+            file_put_contents($avatar_dir . $avatar_name, $avatar_content);
+            $comedien->setImageName($avatar_name);
+
 
             $manager->persist($comedien);
 
