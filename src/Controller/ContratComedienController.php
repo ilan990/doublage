@@ -33,6 +33,7 @@ class ContratComedienController extends AbstractController
         $roles = $roleRepository ->findAllRolesByDa($da ->getIdDa());
 
         $id_comedien = $request->attributes->get('id_comedien');
+
         $comedien = $comedienRepository->find($id_comedien);
 
 
@@ -45,25 +46,13 @@ class ContratComedienController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $form->getData();
+
             $contratComedien->setIdDa($da);
             $contratComedien->setIdComedien($comedien);
             $contratComedien->setCreationContrat(new \DateTimeImmutable());
 
-            $existingContratComedien = $contratComedienRepository->findOneBy([
-                'id_da' => $da,
-                'id_comedien' => $comedien,
-                'titre' => $contratComedien->getTitre(),
-                'roleComedien' => $contratComedien->getRoleComedien(),
-                ]);
-
-            if ($existingContratComedien) {
-                // Traiter le cas où une ligne avec les mêmes valeurs existe déjà
-                // ...
-            } else {
-                // Enregistrer le nouveau contrat dans la base de données
-                $contratComedienRepository->save($contratComedien, true);
-                return $this->redirectToRoute('app_contrat_comedien_index', [], Response::HTTP_SEE_OTHER);
-            }
+            $contratComedienRepository->save($contratComedien, true);
 
             return $this->redirectToRoute('app_contrat_comedien_index', [], Response::HTTP_SEE_OTHER);
         }
